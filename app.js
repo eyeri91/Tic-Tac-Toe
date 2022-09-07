@@ -1,4 +1,5 @@
 import { GameBoard } from "./modules/game.js";
 
-console.log(GameBoard.test());
+// GameBoard.create9Cells();
+// console.log(GameBoard.cells);
 // const appContainer = document.getElementById("gameContainer");
