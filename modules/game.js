@@ -19,15 +19,17 @@ export const GameBoard = (function () {
     // grid or cell.id and player will be passed from View)
   ) {
     if (cells[pickedCellId].isEmpty) {
+      cells[pickedCellId].isEmpty = false;
       cells[pickedCellId].assignedPlayerSign = player.sign;
       roundCount++;
     }
     if (roundCount === 9) checkWinningLine();
   }
 
-  // checkIfAllCellsAreAssigned () {
-  //  return cells.some((cell)=> (cell.isEmpty === true) )
-  // }
+  function checkIfAllCellsAreAssigned() {
+    return cells.some((cell) => cell.isEmpty === true);
+  }
+
   // pickCell(pickedCell, player) {
   //  if(!pickedCell.isEmpty)
   //  -> pickedCell.isEmpty = false;
