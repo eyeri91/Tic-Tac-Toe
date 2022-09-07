@@ -5,17 +5,26 @@ export const GameBoard = (function () {
   const create9Cells = () => {
     for (let i = 0; i < 9; i++) {
       let cell = {};
-      // cell.id = i;
+      cell.id = i;
       cell.isEmpty = true;
       cell.assignedPlayerSign = null;
       cells.push(cell);
     }
   };
   create9Cells();
-  // by for loops -> name the cell and cell.isEmpty assign;
-  // cell1.isEmpty = true;
-  // cells.push(cell);
-  //
+
+  function assignCell(
+    pickedCellId,
+    player
+    // grid or cell.id and player will be passed from View)
+  ) {
+    if (cells[pickedCellId].isEmpty) {
+      cells[pickedCellId].assignedPlayerSign = player.sign;
+      roundCount++;
+    }
+    if (roundCount === 9) checkWinningLine();
+  }
+
   // checkIfAllCellsAreAssigned () {
   //  return cells.some((cell)=> (cell.isEmpty === true) )
   // }
@@ -24,11 +33,7 @@ export const GameBoard = (function () {
   //  -> pickedCell.isEmpty = false;
   //  -> assignCell(pickedCell, player.sign);
   // }
-  // assignCell(pickedCell, player.sign) {
-  //   pickedCell.assignedPlayer = player.sign;
-  //  roundCount++;
-  //  if(roundCount === 9) checkWinningLine()
-  // }
+
   //
   // checkWinningLine(cells) {
   //    const winningCases = [
@@ -50,5 +55,5 @@ export const GameBoard = (function () {
   //  else(results == draw)
   // }
 
-  return { cells };
+  return { roundCount, cells, assignCell };
 })();
