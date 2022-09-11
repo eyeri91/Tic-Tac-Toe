@@ -58,25 +58,23 @@ export const GameBoard = (function () {
           winningLine = line;
         }
       }
-    }
+    } else alert("This game hasn't finished yet!");
   }
 
-  // function announceResults() {
-  //   if (winningLine) {
-  //     const winnerSign = winningLine[0].assignedPlayerSign;
-  //   } else {
-  //     return "draw";
-  //   };
-  // }
-  //  const results = checkingWinningLine();
-  //  if(results == x)
-  //  elseif(results == 0)
-  //  else(results == draw)
+  function returnResults() {
+    if (winningLine) {
+      const winnerSign = winningLine[0].assignedPlayerSign;
+      return winnerSign;
+    } else {
+      return "draw";
+    }
+  }
 
   return {
     roundCount,
     cells,
     assignCell,
     checkWinningLine,
+    returnResults,
   };
 })();
