@@ -1,7 +1,8 @@
 export const GameBoard = (function () {
   const roundCount = 1;
-  const areAllCellsAssigned = false;
   const cells = [];
+  const winningLine = null;
+
   const create9Cells = () => {
     for (let i = 0; i < 9; i++) {
       let cell = {};
@@ -11,6 +12,7 @@ export const GameBoard = (function () {
       cells.push(cell);
     }
   };
+
   create9Cells();
 
   function assignCell(
@@ -30,32 +32,51 @@ export const GameBoard = (function () {
     return cells.some((cell) => cell.isEmpty === true);
   }
 
-  // pickCell(pickedCell, player) {
-  //  if(!pickedCell.isEmpty)
-  //  -> pickedCell.isEmpty = false;
-  //  -> assignCell(pickedCell, player.sign);
-  // }
+  // Later if (checkIfAllCellsAreAssigned()) {
+  // checkWinningLine(cells) }
+  // else -> alert( Game HAsn't finished yet!) in main class
 
-  //
-  // checkWinningLine(cells) {
-  //    const winningCases = [
-  //      [0,1,2],[3,4,5,],[6,7,8],
-  //      [0,3,6],[1,4,7],[2,5,8],
-  //       [0,4,8],[2,4,6]
-  //     ]
-  //  for(let case in winningCases){
-  // if(case[0].assignedPlayer == case[1].assignedPlayer == case[2].assignedPlayer) {
-  //     const winnerSign = case[2].assignedPlayer;
-  //     return winnerSign
-  //        }
-  //    } else return "draw"
+  function checkWinningLine(cells) {
+    if (checkIfAllCellsAreAssigned) {
+      const winningLines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+      ];
+
+      for (const line in winningLines) {
+        if (
+          (cells[line[0]].assignedPlayerSign ===
+            cells[line[1]].assignedPlayerSign) ===
+          cells[line[2]].assignedPlayerSign
+        ) {
+          winningLine = line;
+        }
+      }
+    }
+  }
+
+  // function announceResults() {
+  //   if (winningLine) {
+  //     const winnerSign = winningLine[0].assignedPlayerSign;
+  //   } else {
+  //     return "draw";
+  //   };
   // }
-  // announceResults() {
   //  const results = checkingWinningLine();
   //  if(results == x)
   //  elseif(results == 0)
   //  else(results == draw)
-  // }
 
-  return { roundCount, cells, assignCell };
+  return {
+    roundCount,
+    cells,
+    assignCell,
+    checkWinningLine,
+  };
 })();
