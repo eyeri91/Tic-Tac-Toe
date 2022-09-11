@@ -29,7 +29,8 @@ export const GameBoard = (function () {
   }
 
   function checkIfAllCellsAreAssigned() {
-    return cells.some((cell) => cell.isEmpty === true);
+    if (cells.some((cell) => cell.isEmpty === true)) return false;
+    return true;
   }
 
   // Later if (checkIfAllCellsAreAssigned()) {
