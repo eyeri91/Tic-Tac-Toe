@@ -1,6 +1,13 @@
 export const Display = (function (appContainer) {
   const appContainer = appContainer;
-  //   renderStartPage()
+
+  function createElement(elementType, elementText = "") {
+    const element = document.createElement(elementType);
+    element.textContent = elementText;
+    return element;
+  }
+
+  //   function renderStartPage() {}
   //   renderGamePage()
   //renderResults()
 })(appContainer);
