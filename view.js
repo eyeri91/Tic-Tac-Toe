@@ -57,7 +57,13 @@ export const Display = (function (appContainer) {
     const replayGameButtonContainer = createElement("div");
     appContainer.append(replayGameButtonContainer);
   }
-  //updateResults()
 
-  return { renderStartPage, renderGamePage };
+  function updateResults(gameResults) {
+    // Target the replayGameButtonContainer and then append this button.
+    // const replayGameButton = createElement("button", "Replay");
+    // Target the resultDisplayContainer and then add the text
+    // resultDisplayContainer.textContent = gameResults;
+  }
+
+  return { renderStartPage, renderGamePage, updateResults };
 })(appContainer);
