@@ -1,4 +1,4 @@
-const Player = (name, sign, isCurrentlyPlaying) => {
+export const Player = (name, sign, isCurrentlyPlaying) => {
   function togglePlayingStatus(player) {
     player.isCurrentlyPlaying = !player.isCurrentlyPlaying;
   }
