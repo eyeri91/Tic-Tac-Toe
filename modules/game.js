@@ -15,14 +15,10 @@ export const GameBoard = (function () {
 
   create9Cells();
 
-  function assignCell(
-    pickedCellId,
-    player
-    // grid or cell.id and player will be passed from View)
-  ) {
+  function assignCell(pickedCellId, playerData) {
     if (cells[pickedCellId].isEmpty) {
       cells[pickedCellId].isEmpty = false;
-      cells[pickedCellId].assignedPlayerSign = player.sign;
+      cells[pickedCellId].assignedPlayerSign = playerData.sign;
       roundCount++;
     }
     if (roundCount === 9) checkWinningLine();
@@ -32,10 +28,6 @@ export const GameBoard = (function () {
     if (cells.some((cell) => cell.isEmpty === true)) return false;
     return true;
   }
-
-  // Later if (checkIfAllCellsAreAssigned()) {
-  // checkWinningLine(cells) }
-  // else -> alert( Game HAsn't finished yet!) in main class
 
   function checkWinningLine(cells) {
     if (checkIfAllCellsAreAssigned) {
