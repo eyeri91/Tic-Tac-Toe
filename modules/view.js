@@ -37,8 +37,9 @@ export const Display = function (gameApp) {
   }
 
   function renderGamePage() {
-    const resultDisplayContainer = createElement("div");
-    appContainer.append(resultDisplayContainer);
+    const resultsDisplayContainer = createElement("div");
+    resultsDisplayContainer.id = "results-container";
+    appContainer.append(resultsDisplayContainer);
 
     const mainGameDisplayContainer = createElement("div");
     appContainer.append(mainGameDisplayContainer);
@@ -55,14 +56,20 @@ export const Display = function (gameApp) {
     mainGameDisplayContainer.append(player2Div);
 
     const replayGameButtonContainer = createElement("div");
+    replayGameButtonContainer.id = "replay-container";
     appContainer.append(replayGameButtonContainer);
   }
 
   function updateResults(gameResults) {
-    // Target the replayGameButtonContainer and then append this button.
-    // const replayGameButton = createElement("button", "Replay");
-    // Target the resultDisplayContainer and then add the text
-    // resultDisplayContainer.textContent = gameResults;
+    const replayGameButtonContainer =
+      document.getElementById("replay-container");
+
+    const replayGameButton = createElement("button", "Replay");
+    replayGameButtonContainer.append(replayGameButton);
+
+    const resultsDisplayContainer =
+      document.getElementById("results-container");
+    resultsDisplayContainer.textContent = gameResults;
   }
 
   return { renderStartPage, renderGamePage, updateResults };
