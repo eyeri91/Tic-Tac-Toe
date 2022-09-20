@@ -56,8 +56,11 @@ export const GameBoard = (function () {
 
   function returnResults() {
     if (winningLine) {
-      const winnerSign = winningLine[0].assignedPlayerSign;
-      return winnerSign;
+      const winnerData = {
+        winnerSign: winningLine[0].assignedPlayerSign,
+        winningLine: winningLine,
+      };
+      return winnerData;
     } else {
       return "draw";
     }
