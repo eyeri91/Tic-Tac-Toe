@@ -9,6 +9,7 @@ export const GameBoard = (function () {
       cell.id = i;
       cell.isEmpty = true;
       cell.assignedPlayerSign = null;
+      cell.assignedPlayer = null;
       cells.push(cell);
     }
   };
@@ -19,6 +20,7 @@ export const GameBoard = (function () {
     if (cells[pickedCellId].isEmpty) {
       cells[pickedCellId].isEmpty = false;
       cells[pickedCellId].assignedPlayerSign = playerData.sign;
+      cells[pickedCellId].assignedPlayer = playerData.name;
       roundCount++;
     }
     if (roundCount === 9) checkWinningLine();
@@ -57,7 +59,8 @@ export const GameBoard = (function () {
   function returnResults() {
     if (winningLine) {
       const winnerData = {
-        winnerSign: winningLine[0].assignedPlayerSign,
+        winner: cells[winningLine[0]].assignedPlayerSign,
+        winnerSign: cells[winningLine[0]].assignedPlayerSign,
         winningLine: winningLine,
       };
       return winnerData;
