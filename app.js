@@ -1,9 +1,4 @@
-import { Display } from "./modules/view.js";
-import { GameBoard } from "./modules/game.js";
+import { Controller } from "./modules/controller.js";
 const gameApp = document.getElementById("gameContainer");
 
-const display = Display(gameApp);
-
-// GameBoard.create9Cells();
-// console.log(GameBoard.cells);
-// const appContainer = document.getElementById("gameContainer");
+const display = Controller(gameApp);
