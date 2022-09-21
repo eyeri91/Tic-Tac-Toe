@@ -12,6 +12,8 @@ export const Display = function (gameApp) {
       const cell = createElement("div");
       cell.id = i;
       cell.classList.add("grid-item");
+      // Fill cells with temporary marks 'X'.
+      cell.textContent = "X";
       gridBoard.append(cell);
     }
   }
@@ -48,6 +50,7 @@ export const Display = function (gameApp) {
     mainGameDisplayContainer.append(player1Div);
 
     const gameBoardGrid = createElement("div");
+    gameBoardGrid.classList.add("grid-container");
     mainGameDisplayContainer.append(gameBoardGrid);
 
     createGridCells(gameBoardGrid);
