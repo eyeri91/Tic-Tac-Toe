@@ -1,4 +1,4 @@
-import { EvenetManager } from "./eventManager.js";
+import { EventManager } from "./eventManager.js";
 import { Display } from "./view.js";
 import { GameBoard } from "./game.js";
 

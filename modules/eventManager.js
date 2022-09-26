@@ -1,4 +1,4 @@
-export const EvenetManager = (function () {
+export const EventManager = (function () {
   const events = {};
 
   function subscribe(eventName, subscribers) {
