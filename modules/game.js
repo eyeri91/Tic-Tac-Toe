@@ -1,7 +1,11 @@
+import { Player } from "./player";
+
 export const GameBoard = (function () {
   const roundCount = 1;
   const cells = [];
   const winningLine = null;
+  const player1 = null;
+  const player2 = null;
 
   const create9Cells = () => {
     for (let i = 0; i < 9; i++) {
@@ -70,6 +74,9 @@ export const GameBoard = (function () {
   }
 
   return {
+    player1,
+    player2,
+    winningLine,
     roundCount,
     cells,
     assignCell,
