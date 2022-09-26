@@ -14,7 +14,6 @@ export const EventManager = (function () {
     for (const subscriber of subscribers) {
       subscriber(data);
     }
-
-    return { subscribe, publish };
   }
+  return { subscribe, publish };
 })();
