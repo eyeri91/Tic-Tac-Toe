@@ -4,6 +4,7 @@ import { GameBoard } from "./game.js";
 
 export const Controller = function (root) {
   const view = Display(root);
+  const eventManager = EventManager;
 
   function init() {
     const model = GameBoard;
@@ -12,3 +13,11 @@ export const Controller = function (root) {
 
   return { init };
 };
+
+/***
+ * select the player
+ * start game
+ * assign cell
+ * gameEnd
+ *
+ */
