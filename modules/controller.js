@@ -1,5 +1,5 @@
+import { EvenetManager } from "./eventManager.js";
 import { Display } from "./view.js";
-
 import { GameBoard } from "./game.js";
 
 export const Controller = function (root) {
