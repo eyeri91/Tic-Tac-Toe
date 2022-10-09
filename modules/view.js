@@ -1,4 +1,11 @@
 export const Display = function (gameApp) {
+  /**
+   * const player1 = {
+   * sign: X,
+   * color: pink
+   * assignedCell: [];
+   * }; */
+  // const player2 = {};
   const appContainer = gameApp;
 
   function createElement(elementType, elementText = "") {
@@ -36,6 +43,9 @@ export const Display = function (gameApp) {
 
     const startGameButton = createElement("button", "Start Game");
     appContainer.append(startGameButton);
+
+    // start game button.disabled = true until player selects the sign.
+    // Also add eventListeners to buttons
   }
 
   function renderGamePage() {
@@ -63,6 +73,10 @@ export const Display = function (gameApp) {
     appContainer.append(replayGameButtonContainer);
   }
 
+  function changeCellColor(cellData) {
+    //
+  }
+
   function updateResults(gameResults) {
     const replayGameButtonContainer =
       document.getElementById("replay-container");
@@ -75,5 +89,5 @@ export const Display = function (gameApp) {
     resultsDisplayContainer.textContent = gameResults;
   }
 
-  return { renderStartPage, renderGamePage, updateResults };
+  return { renderStartPage, renderGamePage, changeCellColor, updateResults };
 };
