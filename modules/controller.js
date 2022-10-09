@@ -18,13 +18,20 @@ export const Controller = function (root) {
 
   eventManager.subscribe("gameEnd", (data) => model.checkWinningLine(data));
 
-  eventManager.subscribe("showResuts", (data) => view.updateResults(data));
+  eventManager.subscribe("releaseResuts", (data) => view.updateResults(data));
 
-  eventManager.publish("gameStart", data);
-  eventManager.publish("gameEnd", data);
+  // eventManager.publish("gameStart", data);
+  // eventManager.publish("gameEnd", data);
 
-  const view = Display(root, (data) => eventManager.publish("gameStart"));
-  const model = GameBoard;
+  const view = Display(
+    root,
+    (data) => eventManager.publish("gameStart"),
+    (data) => eventManager.publish("assignCell")
+  );
+  const model = GameBoard(
+    (data) => eventManager.publish("gameEnd"),
+    (data) => eventManager.publish("releaseResults")
+  );
 
   function init() {
     view.renderStartPage();

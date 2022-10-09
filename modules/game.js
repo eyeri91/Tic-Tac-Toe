@@ -1,6 +1,9 @@
 import { Player } from "./player";
 
-export const GameBoard = (function () {
+export const GameBoard = (function (
+  publishGameEndEvent,
+  publishReleaseResultsEvent
+) {
   const roundCount = 1;
   const cells = [];
   const winningLine = null;
