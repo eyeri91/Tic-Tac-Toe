@@ -40,28 +40,30 @@ export const Display = function (
     appContainer.append(playerButtonsContainer);
 
     const player1Button = createElement("button", "X");
-    player1Button.addEventListener("click", () =>
-      toggleButtonClass(player1Button, player2Button)
-    );
     playerButtonsContainer.append(player1Button);
+    player1Button.addEventListener("click", () => {
+      startGameButton.disabled = false;
+      toggleButtonClass(player1Button, player2Button);
+    });
 
     const player2Button = createElement("button", "O");
-    player2Button.addEventListener("click", () =>
-      toggleButtonClass(player2Button, player1Button)
-    );
     playerButtonsContainer.append(player2Button);
+    player2Button.addEventListener("click", () => {
+      startGameButton.disabled = false;
+      toggleButtonClass(player2Button, player1Button);
+    });
 
     const startGameButton = createElement("button", "Start Game");
     startGameButton.disabled = true;
+    appContainer.append(startGameButton);
     startGameButton.addEventListener("click", () => {
       // Send data which charactor user chose to play
-      const userMark = checkWhichMarkUserChose(player1Button, player2Button);
+      const assignedMarksArray = returnAssignedMarks(
+        player1Button,
+        player2Button
+      );
       publishGameStartEvent(userMark);
     });
-    appContainer.append(startGameButton);
-
-    // start game button.disabled = true until player selects the sign.
-    // Also add eventListeners to buttons
   }
 
   function toggleButtonClass(userMarkButton, computerMarkButton) {
@@ -72,11 +74,14 @@ export const Display = function (
     }
   }
 
-  function checkWhichMarkUserChose(player1Button, player2Button) {
+  function returnAssignedMarks(player1Button, player2Button) {
+    // Return an array of assgined marks.
+    // Index 0 is always user.
     player1Button.classList.contains("userMarks")
-      ? player1Button.textContent
-      : player2Button.textContent;
+      ? [player1Button.textContent, player2Button.textContent]
+      : [player2Button.textContent, player1Button.textContent];
   }
+
   function renderGamePage() {
     const resultsDisplayContainer = createElement("div");
     resultsDisplayContainer.id = "results-container";

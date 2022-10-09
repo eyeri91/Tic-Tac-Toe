@@ -23,6 +23,11 @@ export const GameBoard = (function (
 
   create9Cells();
 
+  function assignPlayers(assignedMarks) {
+    player1 = Player("user", assignedMarks[0], true);
+    player2 = Player("computer", assignedMarks[1], false);
+  }
+
   function assignCell(pickedCellId, playerData) {
     if (cells[pickedCellId].isEmpty) {
       cells[pickedCellId].isEmpty = false;

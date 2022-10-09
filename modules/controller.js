@@ -7,8 +7,8 @@ export const Controller = function (root) {
 
   eventManager.subscribe(
     "gameStart",
-    (data) => view.renderGamePage()
-    // Send chosen player details to view.
+    (data) => view.renderGamePage(),
+    (data) => model.assignPlayers(data)
   );
 
   eventManager.subscribe("assignCell", (data) => {
