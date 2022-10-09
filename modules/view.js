@@ -25,10 +25,10 @@ export const Display = function (
       cell.classList.add("grid-item");
       // Fill cells with temporary marks 'X'.
       cell.textContent = "X";
-      cell.addEventListener(
-        "click"
-        // assign cell mark / change the color function;
-      );
+      cell.addEventListener("click", (cell) => {
+        publishAssignCellEvent(cell.id);
+        changeCellColor(cell.id);
+      });
       gridBoard.append(cell);
     }
   }
@@ -111,8 +111,9 @@ export const Display = function (
     appContainer.append(replayGameButtonContainer);
   }
 
-  function changeCellColor(cellData) {
-    //
+  function changeCellColor(cellId) {
+    const pickedCell = document.getElementById(cellId);
+    //chosenCell.classList.add('userMarkColor');
   }
 
   function updateResults(gameResults) {

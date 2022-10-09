@@ -13,7 +13,6 @@ export const Controller = function (root) {
 
   eventManager.subscribe("assignCell", (data) => {
     model.assignCell(data);
-    view.changeCellColor(data);
   });
 
   eventManager.subscribe("gameEnd", (data) => model.checkWinningLine(data));

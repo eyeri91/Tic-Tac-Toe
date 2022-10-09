@@ -28,13 +28,18 @@ export const GameBoard = (function (
     player2 = Player("computer", assignedMarks[1], false);
   }
 
-  function assignCell(pickedCellId, playerData) {
-    if (cells[pickedCellId].isEmpty) {
-      cells[pickedCellId].isEmpty = false;
-      cells[pickedCellId].assignedPlayerSign = playerData.sign;
-      cells[pickedCellId].assignedPlayer = playerData.name;
+  function assignCell(pickedCellId) {
+    // find the cell which has id of pickedCellId and change the properties.
+    const pickedCell = cells.find((cell) => cell.id === pickedCellId);
+    const activePlayer = player1.isCurrentlyPlaying ? player1 : player2;
+    if (pickedCell.isEmpty) {
+      pickedCell.isEmpty = false;
+      pickedCell.assignedPlayerSign = activePlayer.sign;
+      pickedCell.assignedPlayer = activePlayer.name;
       roundCount++;
     }
+
+    //  toggleActivePlayer
     if (roundCount === 9) checkWinningLine();
   }
 
