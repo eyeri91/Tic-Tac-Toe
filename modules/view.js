@@ -62,15 +62,15 @@ export const Display = function (
         player1Button,
         player2Button
       );
-      publishGameStartEvent(userMark);
+      publishGameStartEvent(assignedMarksArray);
     });
   }
 
   function toggleButtonClass(userMarkButton, computerMarkButton) {
-    userMarkButton.className.add("userMark");
+    userMarkButton.className = "userMark";
     if (computerMarkButton.classList.contains("userMark")) {
       computerMarkButton.className.remove("userMark");
-      computerMarkButton.className.add("compMark");
+      computerMarkButton.className = "userMark";
     }
   }
 

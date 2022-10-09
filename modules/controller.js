@@ -7,7 +7,7 @@ export const Controller = function (root) {
 
   eventManager.subscribe(
     "gameStart",
-    (data) => view.renderGamePage(),
+    () => view.renderGamePage(),
     (data) => model.assignPlayers(data)
   );
 
@@ -25,12 +25,12 @@ export const Controller = function (root) {
 
   const view = Display(
     root,
-    (data) => eventManager.publish("gameStart"),
-    (data) => eventManager.publish("assignCell")
+    (data) => eventManager.publish("gameStart", data),
+    (data) => eventManager.publish("assignCell", data)
   );
   const model = GameBoard(
-    (data) => eventManager.publish("gameEnd"),
-    (data) => eventManager.publish("releaseResults")
+    (data) => eventManager.publish("gameEnd", data),
+    (data) => eventManager.publish("releaseResults", data)
   );
 
   function init() {
