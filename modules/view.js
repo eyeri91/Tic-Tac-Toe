@@ -81,7 +81,7 @@ export const Display = function (
   function returnAssignedMarks(player1Button, player2Button) {
     // Return an array of assgined marks.
     // Index 0 is always user.
-    player1Button.classList.contains("userMarks")
+    return player1Button.classList.contains("userMark")
       ? [player1Button.textContent, player2Button.textContent]
       : [player2Button.textContent, player1Button.textContent];
   }
