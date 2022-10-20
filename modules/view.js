@@ -34,6 +34,7 @@ export const Display = function (
   }
 
   function renderStartPage() {
+    if (appContainer.hasChildNodes()) appContainer.replaceChildren();
     const gameTitle = createElement("h1", "Tic-Tac-Toe");
     appContainer.append(gameTitle);
 
@@ -87,6 +88,7 @@ export const Display = function (
   }
 
   function renderGamePage() {
+    if (appContainer.hasChildNodes()) appContainer.replaceChildren();
     const resultsDisplayContainer = createElement("div");
     resultsDisplayContainer.id = "results-container";
     appContainer.append(resultsDisplayContainer);
