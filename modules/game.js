@@ -35,15 +35,16 @@ export const GameBoard = function (
     const pickedCell = cells.find((cell) => cell.id === parseInt(pickedCellId));
     const activePlayer = players[0].isCurrentlyPlaying
       ? players[0]
-      : players[0];
+      : players[1];
     if (pickedCell.isEmpty) {
       pickedCell.isEmpty = false;
       pickedCell.assignedPlayerSign = activePlayer.sign;
       pickedCell.assignedPlayer = activePlayer.name;
       roundCount++;
+      toggleActivePlayer();
     }
+    // console.log(pickedCell);
 
-    toggleActivePlayer();
     if (roundCount === 9) checkWinningLine();
   }
 
@@ -96,8 +97,6 @@ export const GameBoard = function (
   }
 
   return {
-    winningLine,
-    roundCount,
     assignPlayers,
     assignCell,
     checkWinningLine,

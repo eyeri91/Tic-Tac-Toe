@@ -24,7 +24,7 @@ export const Display = function (
       cell.id = i;
       cell.classList.add("grid-item");
       // Fill cells with temporary marks 'X'.
-      cell.textContent = "X";
+      cell.textContent = "@";
       cell.addEventListener("click", () => {
         publishAssignCellEvent(cell.id);
         changeCellColor(cell.id);

@@ -12,6 +12,7 @@ export const Controller = function (root) {
   eventManager.subscribe("assignCell", (data) => {
     model.assignCell(data);
     // Once cell is assigned -> change the color and textContent in View.
+    // We need a logic to switch the player;
   });
 
   eventManager.subscribe("gameEnd", (data) => model.checkWinningLine(data));
@@ -42,6 +43,7 @@ export const Controller = function (root) {
  * select the player
  * start game
  * assign cell
+ * cellAssigned (that passes the mark of the cell owner)
  * gameEnd
  *
  */
