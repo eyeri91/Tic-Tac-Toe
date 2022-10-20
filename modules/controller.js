@@ -11,6 +11,7 @@ export const Controller = function (root) {
 
   eventManager.subscribe("assignCell", (data) => {
     model.assignCell(data);
+    // Once cell is assigned -> change the color and textContent in View.
   });
 
   eventManager.subscribe("gameEnd", (data) => model.checkWinningLine(data));

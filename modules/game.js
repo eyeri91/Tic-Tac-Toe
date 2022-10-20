@@ -4,11 +4,12 @@ export const GameBoard = function (
   publishGameEndEvent,
   publishReleaseResultsEvent
 ) {
-  const roundCount = 1;
+  let roundCount = 1;
   const cells = [];
   const winningLine = null;
-  let player1;
-  let player2;
+  const players = [];
+  // let player1;
+  // let player2;
 
   const create9Cells = () => {
     for (let i = 0; i < 9; i++) {
@@ -24,14 +25,17 @@ export const GameBoard = function (
   create9Cells();
 
   function assignPlayers(assignedMarks) {
-    player1 = Player("user", assignedMarks[0], true);
-    player2 = Player("computer", assignedMarks[1], false);
+    const player1 = Player("user", assignedMarks[0], true);
+    const player2 = Player("computer", assignedMarks[1], false);
+    players.push(player1, player2);
   }
 
   function assignCell(pickedCellId) {
     // find the cell which has id of pickedCellId and change the properties.
-    const pickedCell = cells.find((cell) => cell.id === pickedCellId);
-    const activePlayer = player1.isCurrentlyPlaying ? player1 : player2;
+    const pickedCell = cells.find((cell) => cell.id === parseInt(pickedCellId));
+    const activePlayer = players[0].isCurrentlyPlaying
+      ? players[0]
+      : players[0];
     if (pickedCell.isEmpty) {
       pickedCell.isEmpty = false;
       pickedCell.assignedPlayerSign = activePlayer.sign;
@@ -39,8 +43,13 @@ export const GameBoard = function (
       roundCount++;
     }
 
-    //  toggleActivePlayer
+    toggleActivePlayer();
     if (roundCount === 9) checkWinningLine();
+  }
+
+  function toggleActivePlayer() {
+    players[0].isCurrentlyPlaying = !players[0].isCurrentlyPlaying;
+    players[1].isCurrentlyPlaying = !players[1].isCurrentlyPlaying;
   }
 
   function checkIfAllCellsAreAssigned() {
@@ -87,11 +96,8 @@ export const GameBoard = function (
   }
 
   return {
-    player1,
-    player2,
     winningLine,
     roundCount,
-    cells,
     assignPlayers,
     assignCell,
     checkWinningLine,
