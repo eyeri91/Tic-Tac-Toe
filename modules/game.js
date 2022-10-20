@@ -1,6 +1,6 @@
 import { Player } from "./player.js";
 
-export const GameBoard = (function (
+export const GameBoard = function (
   publishGameEndEvent,
   publishReleaseResultsEvent
 ) {
@@ -96,4 +96,4 @@ export const GameBoard = (function (
     checkWinningLine,
     returnResults,
   };
-})();
+};
