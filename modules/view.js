@@ -27,10 +27,16 @@ export const Display = function (
       cell.textContent = "@";
       cell.addEventListener("click", () => {
         publishAssignCellEvent(cell.id);
-        changeCellColor(cell.id);
+        // changeCellColorAndText(cell.id);
       });
       gridBoard.append(cell);
     }
+  }
+
+  function changeCellColorAndText(pickedCellObject) {
+    const pickedCell = document.getElementById(pickedCellObject.id);
+    pickedCell.textContent = pickedCellObject.mark;
+    // chosenCell.classList.add('userMarkColor');
   }
 
   function renderStartPage() {
@@ -112,11 +118,6 @@ export const Display = function (
     appContainer.append(replayGameButtonContainer);
   }
 
-  function changeCellColor(cellId) {
-    const pickedCell = document.getElementById(cellId);
-    //chosenCell.classList.add('userMarkColor');
-  }
-
   function updateResults(gameResults) {
     const replayGameButtonContainer =
       document.getElementById("replay-container");
@@ -129,5 +130,10 @@ export const Display = function (
     resultsDisplayContainer.textContent = gameResults;
   }
 
-  return { renderStartPage, renderGamePage, changeCellColor, updateResults };
+  return {
+    renderStartPage,
+    renderGamePage,
+    changeCellColorAndText,
+    updateResults,
+  };
 };

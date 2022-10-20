@@ -9,18 +9,17 @@ export const Controller = function (root) {
     view.renderGamePage(), model.assignPlayers(data);
   });
 
-  eventManager.subscribe("assignCell", (data) => {
-    model.assignCell(data);
+  eventManager.subscribe("assignCell", (data) => model.assignCell(data));
+
+  eventManager.subscribe(
+    "cellAssigned",
+    (data) => view.changeCellColorAndText(data)
     // Once cell is assigned -> change the color and textContent in View.
-    // We need a logic to switch the player;
-  });
+  );
 
   eventManager.subscribe("gameEnd", (data) => model.checkWinningLine(data));
 
   eventManager.subscribe("releaseResuts", (data) => view.updateResults(data));
-
-  // eventManager.publish("gameStart", data);
-  // eventManager.publish("gameEnd", data);
 
   const view = Display(
     root,
@@ -29,6 +28,7 @@ export const Controller = function (root) {
   );
   const model = GameBoard(
     (data) => eventManager.publish("gameEnd", data),
+    (data) => eventManager.publish("cellAssigned", data),
     (data) => eventManager.publish("releaseResults", data)
   );
 

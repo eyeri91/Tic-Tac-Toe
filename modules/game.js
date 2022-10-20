@@ -2,6 +2,7 @@ import { Player } from "./player.js";
 
 export const GameBoard = function (
   publishGameEndEvent,
+  publishCellAssignedEvent,
   publishReleaseResultsEvent
 ) {
   let roundCount = 1;
@@ -42,6 +43,12 @@ export const GameBoard = function (
       pickedCell.assignedPlayer = activePlayer.name;
       roundCount++;
       toggleActivePlayer();
+      const pickedCellObject = {
+        id: pickedCell.id,
+        owner: activePlayer,
+        mark: activePlayer.sign,
+      };
+      publishCellAssignedEvent(pickedCellObject);
     }
     // console.log(pickedCell);
 
