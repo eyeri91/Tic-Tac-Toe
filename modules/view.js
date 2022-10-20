@@ -74,8 +74,7 @@ export const Display = function (
   function toggleButtonClass(userMarkButton, computerMarkButton) {
     userMarkButton.className = "userMark";
     if (computerMarkButton.classList.contains("userMark")) {
-      computerMarkButton.className.remove("userMark");
-      computerMarkButton.className = "userMark";
+      computerMarkButton.classList.remove("userMark");
     }
   }
 
