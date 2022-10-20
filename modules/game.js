@@ -7,8 +7,8 @@ export const GameBoard = function (
   const roundCount = 1;
   const cells = [];
   const winningLine = null;
-  const player1 = null;
-  const player2 = null;
+  let player1;
+  let player2;
 
   const create9Cells = () => {
     for (let i = 0; i < 9; i++) {
@@ -92,6 +92,7 @@ export const GameBoard = function (
     winningLine,
     roundCount,
     cells,
+    assignPlayers,
     assignCell,
     checkWinningLine,
     returnResults,

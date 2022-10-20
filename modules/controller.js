@@ -5,11 +5,9 @@ import { GameBoard } from "./game.js";
 export const Controller = function (root) {
   const eventManager = EventManager;
 
-  eventManager.subscribe(
-    "gameStart",
-    () => view.renderGamePage(),
-    (data) => model.assignPlayers(data)
-  );
+  eventManager.subscribe("gameStart", (data) => {
+    view.renderGamePage(), model.assignPlayers(data);
+  });
 
   eventManager.subscribe("assignCell", (data) => {
     model.assignCell(data);
