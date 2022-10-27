@@ -15,9 +15,7 @@ export const Controller = function (root) {
     view.changeCellColorAndText(data)
   );
 
-  eventManager.subscribe("gameEnd", (data) => model.checkWinningLine(data));
-
-  eventManager.subscribe("releaseResuts", (data) => view.updateResults(data));
+  eventManager.subscribe("gameEnd", (data) => view.updateResults(data));
 
   const view = Display(
     root,
@@ -26,8 +24,7 @@ export const Controller = function (root) {
   );
   const model = GameBoard(
     (data) => eventManager.publish("cellAssigned", data),
-    (data) => eventManager.publish("gameEnd", data),
-    (data) => eventManager.publish("releaseResults", data)
+    (data) => eventManager.publish("gameEnd", data)
   );
 
   function init() {

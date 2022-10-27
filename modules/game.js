@@ -2,15 +2,22 @@ import { Player } from "./player.js";
 
 export const GameBoard = function (
   publishCellAssignedEvent,
-  publishGameEndEvent,
-  publishReleaseResultsEvent
+  publishGameEndEvent
 ) {
-  let roundCount = 1;
+  let roundCount = 0;
   const cells = [];
-  const winningLine = null;
+  let winningLine = null;
   const players = [];
-  // let player1;
-  // let player2;
+  const winningLines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
 
   const create9Cells = () => {
     for (let i = 0; i < 9; i++) {
@@ -52,7 +59,13 @@ export const GameBoard = function (
     }
     // console.log(pickedCell);
 
-    if (roundCount === 9) checkWinningLine();
+    if (roundCount === 9) {
+      if (checkIfAllCellsAreAssigned()) {
+        checkWinningLine(cells);
+      } else {
+        alert("The game hasn't finished yet!");
+      }
+    }
   }
 
   function toggleActivePlayer() {
@@ -66,36 +79,28 @@ export const GameBoard = function (
   }
 
   function checkWinningLine(cells) {
-    if (checkIfAllCellsAreAssigned) {
-      const winningLines = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6],
-      ];
+    for (const line of winningLines) {
+      let firstCell = cells.find((cell) => cell.id === line[0]);
+      let secondCell = cells.find((cell) => cell.id === line[1]);
+      let thirdCell = cells.find((cell) => cell.id === line[2]);
 
-      for (const line in winningLines) {
-        if (
-          (cells[line[0]].assignedPlayerSign ===
-            cells[line[1]].assignedPlayerSign) ===
-          cells[line[2]].assignedPlayerSign
-        ) {
-          winningLine = line;
-        }
+      if (
+        firstCell.assignedPlayerSign === secondCell.assignedPlayerSign &&
+        firstCell.assignedPlayerSign === thirdCell.assignedPlayerSign
+      ) {
+        winningLine = line;
+        publishGameEndEvent();
+        return;
       }
-    } else alert("This game hasn't finished yet!");
+    }
   }
 
-  function returnResults() {
+  function publishGameEndEvent() {
     if (winningLine) {
       const winnerData = {
-        winner: cells[winningLine[0]].assignedPlayerSign,
+        winner: cells[winningLine[0]].assignedPlayer,
         winnerSign: cells[winningLine[0]].assignedPlayerSign,
-        winningLine: winningLine,
+        winningLine,
       };
       return winnerData;
     } else {
@@ -107,6 +112,5 @@ export const GameBoard = function (
     assignPlayers,
     assignCell,
     checkWinningLine,
-    returnResults,
   };
 };

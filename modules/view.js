@@ -124,6 +124,7 @@ export const Display = function (
   }
 
   function updateResults(gameResults) {
+    // console.log(gameResults);
     const replayGameButtonContainer =
       document.getElementById("replay-container");
 
