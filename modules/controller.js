@@ -11,10 +11,8 @@ export const Controller = function (root) {
 
   eventManager.subscribe("assignCell", (data) => model.assignCell(data));
 
-  eventManager.subscribe(
-    "cellAssigned",
-    (data) => view.changeCellColorAndText(data)
-    // Once cell is assigned -> change the color and textContent in View.
+  eventManager.subscribe("cellAssigned", (data) =>
+    view.changeCellColorAndText(data)
   );
 
   eventManager.subscribe("gameEnd", (data) => model.checkWinningLine(data));
@@ -27,8 +25,8 @@ export const Controller = function (root) {
     (data) => eventManager.publish("assignCell", data)
   );
   const model = GameBoard(
-    (data) => eventManager.publish("gameEnd", data),
     (data) => eventManager.publish("cellAssigned", data),
+    (data) => eventManager.publish("gameEnd", data),
     (data) => eventManager.publish("releaseResults", data)
   );
 

@@ -1,8 +1,8 @@
 import { Player } from "./player.js";
 
 export const GameBoard = function (
-  publishGameEndEvent,
   publishCellAssignedEvent,
+  publishGameEndEvent,
   publishReleaseResultsEvent
 ) {
   let roundCount = 1;
