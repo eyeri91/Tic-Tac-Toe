@@ -33,12 +33,6 @@ export const Display = function (
     }
   }
 
-  function changeCellColorAndText(pickedCellObject) {
-    const pickedCell = document.getElementById(pickedCellObject.id);
-    pickedCell.textContent = pickedCellObject.mark;
-    // chosenCell.classList.add('userMarkColor');
-  }
-
   function renderStartPage() {
     if (appContainer.hasChildNodes()) appContainer.replaceChildren();
     const gameTitle = createElement("h1", "Tic-Tac-Toe");
@@ -116,6 +110,17 @@ export const Display = function (
     const replayGameButtonContainer = createElement("div");
     replayGameButtonContainer.id = "replay-container";
     appContainer.append(replayGameButtonContainer);
+  }
+
+  function changeCellColorAndText(pickedCellObject) {
+    const pickedCell = document.getElementById(pickedCellObject.id);
+    pickedCell.textContent = pickedCellObject.mark;
+    // chosenCell.classList.add('userMarkColor');
+    if (pickedCellObject.owner.name === "user") {
+      pickedCell.classList.add("userMarkColor");
+    } else {
+      pickedCell.classList.add("compMarkColor");
+    }
   }
 
   function updateResults(gameResults) {
