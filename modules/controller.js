@@ -4,6 +4,7 @@ import { GameBoard } from "./game.js";
 
 export const Controller = function (root) {
   const eventManager = EventManager;
+  let model;
 
   eventManager.subscribe("gameStart", (data) => {
     view.renderGamePage(), model.assignPlayers(data);
@@ -22,15 +23,16 @@ export const Controller = function (root) {
   const view = Display(
     root,
     (data) => eventManager.publish("gameStart", data),
-    (data) => eventManager.publish("assignCell", data)
-  );
-  const model = GameBoard(
-    (data) => eventManager.publish("cellAssigned", data),
-    (data) => eventManager.publish("gameEnd", data)
+    (data) => eventManager.publish("assignCell", data),
+    () => init()
   );
 
   function init() {
     view.renderStartPage();
+    model = GameBoard(
+      (data) => eventManager.publish("cellAssigned", data),
+      (data) => eventManager.publish("gameEnd", data)
+    );
   }
 
   return { init };

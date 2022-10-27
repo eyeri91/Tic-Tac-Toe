@@ -1,7 +1,8 @@
 export const Display = function (
   gameApp,
   publishGameStartEvent,
-  publishAssignCellEvent
+  publishAssignCellEvent,
+  publishPlayGameAgainEvent
 ) {
   const appContainer = gameApp;
 
@@ -122,6 +123,7 @@ export const Display = function (
 
     const replayGameButton = createElement("button", "Replay");
     replayGameButtonContainer.append(replayGameButton);
+    replayGameButton.addEventListener("click", publishPlayGameAgainEvent);
 
     const resultsDisplayContainer =
       document.getElementById("results-container");
