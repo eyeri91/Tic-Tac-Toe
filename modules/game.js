@@ -57,8 +57,7 @@ export const GameBoard = function (
       };
       publishCellAssignedEvent(pickedCellObject);
     }
-    // console.log(pickedCell);
-
+    if (roundCount >= 5) checkWinningLine(cells);
     if (roundCount === 9) {
       if (checkIfAllCellsAreAssigned()) {
         checkWinningLine(cells);
@@ -89,13 +88,13 @@ export const GameBoard = function (
         firstCell.assignedPlayerSign === thirdCell.assignedPlayerSign
       ) {
         winningLine = line;
-        publishGameEndEvent();
-        return;
+        publishGameEndEvent(releaseGameResults());
+        break;
       }
     }
   }
 
-  function publishGameEndEvent() {
+  function releaseGameResults() {
     if (winningLine) {
       const winnerData = {
         winner: cells[winningLine[0]].assignedPlayer,
