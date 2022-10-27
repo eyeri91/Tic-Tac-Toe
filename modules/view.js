@@ -127,7 +127,7 @@ export const Display = function (
 
     const resultsDisplayContainer =
       document.getElementById("results-container");
-    resultsDisplayContainer.textContent = gameResults;
+    resultsDisplayContainer.textContent = gameResults.winner;
   }
 
   function disableClickOnCells() {
