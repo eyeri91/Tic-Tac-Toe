@@ -116,7 +116,6 @@ export const Display = function (
   }
 
   function updateResults(gameResults) {
-    console.log(gameResults);
     disableClickOnCells();
     const replayGameButtonContainer =
       document.getElementById("replay-container");
@@ -127,7 +126,7 @@ export const Display = function (
 
     const resultsDisplayContainer =
       document.getElementById("results-container");
-    resultsDisplayContainer.textContent = gameResults.winner;
+    resultsDisplayContainer.textContent = `Winner : ${gameResults.winnerSign}`;
   }
 
   function disableClickOnCells() {
