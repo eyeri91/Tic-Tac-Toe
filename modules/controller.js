@@ -15,7 +15,9 @@ export const Controller = function (root) {
     view.changeCellColorAndText(data)
   );
 
-  eventManager.subscribe("gameEnd", (data) => view.updateResults(data));
+  eventManager.subscribe("gameEnd", (data) => {
+    view.updateResults(data);
+  });
 
   const view = Display(
     root,
@@ -33,12 +35,3 @@ export const Controller = function (root) {
 
   return { init };
 };
-
-/***
- * select the player
- * start game
- * assign cell
- * cellAssigned (that passes the mark of the cell owner)
- * gameEnd
- *
- */

@@ -3,13 +3,6 @@ export const Display = function (
   publishGameStartEvent,
   publishAssignCellEvent
 ) {
-  /**
-   * const player1 = {
-   * sign: X,
-   * color: pink
-   * assignedCell: [];
-   * }; */
-  // const player2 = {};
   const appContainer = gameApp;
 
   function createElement(elementType, elementText = "") {
@@ -23,11 +16,10 @@ export const Display = function (
       const cell = createElement("div");
       cell.id = i;
       cell.classList.add("grid-item");
-      // Fill cells with temporary marks 'X'.
+      // Fill cells with temporary marks '@'.
       cell.textContent = "@";
       cell.addEventListener("click", () => {
         publishAssignCellEvent(cell.id);
-        // changeCellColorAndText(cell.id);
       });
       gridBoard.append(cell);
     }
@@ -115,7 +107,6 @@ export const Display = function (
   function changeCellColorAndText(pickedCellObject) {
     const pickedCell = document.getElementById(pickedCellObject.id);
     pickedCell.textContent = pickedCellObject.mark;
-    // chosenCell.classList.add('userMarkColor');
     if (pickedCellObject.owner.name === "user") {
       pickedCell.classList.add("userMarkColor");
     } else {
@@ -124,7 +115,8 @@ export const Display = function (
   }
 
   function updateResults(gameResults) {
-    // console.log(gameResults);
+    console.log(gameResults);
+    disableClickOnCells();
     const replayGameButtonContainer =
       document.getElementById("replay-container");
 
@@ -134,6 +126,13 @@ export const Display = function (
     const resultsDisplayContainer =
       document.getElementById("results-container");
     resultsDisplayContainer.textContent = gameResults;
+  }
+
+  function disableClickOnCells() {
+    const cells = document.getElementsByClassName("grid-item");
+    for (const cell of cells) {
+      cell.style.pointerEvents = "none";
+    }
   }
 
   return {
