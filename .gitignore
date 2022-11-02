@@ -1,3 +1,5 @@
 
 # misc
-package.json
+*.json
+*.cjs
+/node_modules
