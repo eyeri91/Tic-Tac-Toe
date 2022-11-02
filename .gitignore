@@ -3,3 +3,4 @@
 *.json
 *.cjs
 /node_modules
+dist/output.css
