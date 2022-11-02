@@ -6,6 +6,8 @@ export const Display = function (
 ) {
   const appContainer = gameApp;
 
+  const classList = {};
+
   function createElement(elementType, elementText = "") {
     const element = document.createElement(elementType);
     element.textContent = elementText;
@@ -29,15 +31,24 @@ export const Display = function (
   function renderStartPage() {
     if (appContainer.hasChildNodes()) appContainer.replaceChildren();
     const gameTitle = createElement("h1", "Tic-Tac-Toe");
+    gameTitle.classList.add("text-5xl", "my-6", "p-2");
     appContainer.append(gameTitle);
 
     const selectPlayerParagraph = createElement("p", "Select the player!");
+    selectPlayerParagraph.classList.add("text-2xl", "my-2");
     appContainer.append(selectPlayerParagraph);
 
     const playerButtonsContainer = createElement("div");
+    playerButtonsContainer.classList.add(
+      "flex",
+      "flex-row",
+      "justify-between",
+      "my-2"
+    );
     appContainer.append(playerButtonsContainer);
 
     const player1Button = createElement("button", "X");
+    player1Button.classList.add("mx-2", "text-5xl");
     playerButtonsContainer.append(player1Button);
     player1Button.addEventListener("click", () => {
       startGameButton.disabled = false;
@@ -45,6 +56,7 @@ export const Display = function (
     });
 
     const player2Button = createElement("button", "O");
+    player2Button.classList.add("mx-2", "text-5xl");
     playerButtonsContainer.append(player2Button);
     player2Button.addEventListener("click", () => {
       startGameButton.disabled = false;
@@ -52,6 +64,7 @@ export const Display = function (
     });
 
     const startGameButton = createElement("button", "Start Game");
+    startGameButton.classList.add("mb-6");
     startGameButton.disabled = true;
     appContainer.append(startGameButton);
     startGameButton.addEventListener("click", () => {
