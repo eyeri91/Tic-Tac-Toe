@@ -1,5 +1,5 @@
 import { Controller } from "../modules/controller.js";
-const gameApp = document.getElementById("gameContainer");
+const gameApp = document.getElementById("game-container");
 
 const display = Controller(gameApp);
 
