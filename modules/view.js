@@ -6,7 +6,9 @@ export const Display = function (
 ) {
   const appContainer = gameApp;
 
-  const classList = {};
+  const classList = {
+    borderRadius: "rounded-md",
+  };
 
   function createElement(elementType, elementText = "") {
     const element = document.createElement(elementType);
@@ -31,11 +33,17 @@ export const Display = function (
   function renderStartPage() {
     if (appContainer.hasChildNodes()) appContainer.replaceChildren();
     const gameTitle = createElement("h1", "Tic-Tac-Toe");
-    gameTitle.classList.add("text-5xl", "my-6", "p-2");
+    gameTitle.classList.add(
+      "text-5xl",
+      "my-7",
+      "px-3",
+      "game-title",
+      "rounded-md"
+    );
     appContainer.append(gameTitle);
 
     const selectPlayerParagraph = createElement("p", "Select the player!");
-    selectPlayerParagraph.classList.add("text-2xl", "my-2");
+    selectPlayerParagraph.classList.add("text-xl", "mt-4", "mb-1");
     appContainer.append(selectPlayerParagraph);
 
     const playerButtonsContainer = createElement("div");
@@ -48,23 +56,36 @@ export const Display = function (
     appContainer.append(playerButtonsContainer);
 
     const player1Button = createElement("button", "X");
-    player1Button.classList.add("mx-2", "text-5xl");
-    playerButtonsContainer.append(player1Button);
-    player1Button.addEventListener("click", () => {
-      startGameButton.disabled = false;
-      toggleButtonClass(player1Button, player2Button);
-    });
+    player1Button.classList.add("bg-red-400");
 
     const player2Button = createElement("button", "O");
-    player2Button.classList.add("mx-2", "text-5xl");
-    playerButtonsContainer.append(player2Button);
-    player2Button.addEventListener("click", () => {
-      startGameButton.disabled = false;
-      toggleButtonClass(player2Button, player1Button);
-    });
+    player2Button.classList.add("bg-blue-400");
+
+    const playerButtons = [player1Button, player2Button];
+
+    for (const button of playerButtons) {
+      button.classList.add("px-5", "mx-5", "text-8xl", "rounded-md");
+      playerButtonsContainer.append(button);
+      button.addEventListener("click", () => {
+        startGameButton.disabled = false;
+        if (button === player1Button) {
+          toggleButtonClass(player1Button, player2Button);
+        } else {
+          toggleButtonClass(player2Button, player1Button);
+        }
+      });
+    }
 
     const startGameButton = createElement("button", "Start Game");
-    startGameButton.classList.add("mb-6");
+    startGameButton.classList.add(
+      "mb-6",
+      "start-btn",
+      "mt-4",
+      "py-1",
+      "px-2",
+      "text-2xl",
+      "rounded-md"
+    );
     startGameButton.disabled = true;
     appContainer.append(startGameButton);
     startGameButton.addEventListener("click", () => {

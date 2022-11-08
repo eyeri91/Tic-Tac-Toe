@@ -11,14 +11,31 @@
   --brightest: #e8eddf;
 
   /* Fonts */
+  --main-font: "Roboto", sans-serif;
   /* Spacing */
 }
+
+/* Main */
 body {
   background-color: var(--bright);
+  color: var(--dark);
+  font-family: var(--main-font);
 }
+
 #game-container {
   background-color: var(--brightest);
 }
+
+/* Start page */
+.game-title {
+  font-style: italic;
+  background-color: var(--bright);
+}
+
+.start-btn {
+  background-color: var(--yellow);
+}
+/* Game page */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
