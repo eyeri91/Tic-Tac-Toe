@@ -159,7 +159,8 @@ export const Display = function (
     mainGameDisplayContainer.append(player1Sign);
 
     const gameBoardGrid = createElement("div");
-    gameBoardGrid.classList.add("grid-container", "my-10");
+    gameBoardGrid.id = "grid-container";
+    gameBoardGrid.classList.add("my-10");
     mainGameDisplayContainer.append(gameBoardGrid);
 
     createGridCells(gameBoardGrid);
@@ -190,16 +191,38 @@ export const Display = function (
   }
 
   function updateResults(gameResults) {
+    const gridBoard = document.getElementById("grid-container");
+    gridBoard.classList.remove("my-10");
+    gridBoard.classList.add("my-4");
     disableClickOnCells();
     const replayGameButtonContainer =
       document.getElementById("replay-container");
-
     const replayGameButton = createElement("button", "Replay");
+    replayGameButton.classList.add(
+      "mb-3",
+      "start-btn",
+      "py-1",
+      "px-3",
+      "text-2xl",
+      "rounded-md",
+      "hover:-translate-y-1",
+      "hover:ease-linear",
+      "hover:bg-amber-400",
+      "duration-100"
+    );
     replayGameButtonContainer.append(replayGameButton);
     replayGameButton.addEventListener("click", publishPlayGameAgainEvent);
 
     const resultsDisplayContainer =
       document.getElementById("results-container");
+    resultsDisplayContainer.classList.add(
+      "text-5xl",
+      "py-1",
+      "px-2",
+      "border-solid",
+      "border-2",
+      "mt-2"
+    );
     resultsDisplayContainer.textContent = `Winner : ${gameResults.winnerSign}`;
   }
 

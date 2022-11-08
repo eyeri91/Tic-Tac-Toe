@@ -39,7 +39,7 @@ body {
   background-color: var(--yellow);
 }
 /* Game page */
-.grid-container {
+#grid-container {
   display: grid;
   grid-template-columns: repeat(3, 120px);
   grid-template-rows: repeat(3, 120px);
