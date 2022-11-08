@@ -9,6 +9,8 @@
   --yellow: #f5cb5c;
   --bright: #cfdbd5;
   --brightest: #e8eddf;
+  --x-sign: rgb(248 113 113);
+  --o-sign: rgb(96 165 250);
 
   /* Fonts */
   --main-font: "Roboto", sans-serif;
@@ -29,29 +31,32 @@ body {
 /* Start page */
 .game-title {
   font-style: italic;
-  background-color: var(--bright);
+  /* background-color: var(--bright); */
 }
 
 .start-btn {
+  color: var(--dark);
   background-color: var(--yellow);
 }
 /* Game page */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 120px);
+  grid-template-rows: repeat(3, 120px);
   border: 1px solid black;
   background-color: grey;
 }
 
 .grid-item {
-  border: 1px solid black;
+  border: 1px solid var(--dark);
   border-collapse: collapse;
+  background-color: var(--brightest);
 }
 
 .userMarkColor {
-  background-color: red;
+  background-color: var(--x-sign);
 }
 
 .compMarkColor {
-  background-color: blue;
+  background-color: var(--o-sign);
 }

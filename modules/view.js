@@ -5,10 +5,17 @@ export const Display = function (
   publishPlayGameAgainEvent
 ) {
   const appContainer = gameApp;
-
-  const classList = {
-    borderRadius: "rounded-md",
-  };
+  appContainer.classList.add(
+    "container",
+    "my-10",
+    "flex",
+    "h-4/6",
+    "flex-col",
+    "content-center",
+    "items-center",
+    "justify-center",
+    "rounded-md"
+  );
 
   function createElement(elementType, elementText = "") {
     const element = document.createElement(elementType);
@@ -20,9 +27,14 @@ export const Display = function (
     for (let i = 0; i < 9; i++) {
       const cell = createElement("div");
       cell.id = i;
-      cell.classList.add("grid-item");
-      // Fill cells with temporary marks '@'.
-      cell.textContent = "@";
+      cell.classList.add(
+        "grid-item",
+        "flex",
+        "justify-center",
+        "content-center",
+        "text-6xl",
+        "p-2"
+      );
       cell.addEventListener("click", () => {
         publishAssignCellEvent(cell.id);
       });
@@ -34,8 +46,8 @@ export const Display = function (
     if (appContainer.hasChildNodes()) appContainer.replaceChildren();
     const gameTitle = createElement("h1", "Tic-Tac-Toe");
     gameTitle.classList.add(
-      "text-5xl",
-      "my-7",
+      "text-8xl",
+      "my-5",
       "px-3",
       "game-title",
       "rounded-md"
@@ -64,7 +76,16 @@ export const Display = function (
     const playerButtons = [player1Button, player2Button];
 
     for (const button of playerButtons) {
-      button.classList.add("px-5", "mx-5", "text-8xl", "rounded-md");
+      button.setAttribute("type", "button");
+      button.classList.add(
+        "px-5",
+        "mx-5",
+        "text-8xl",
+        "rounded-md",
+        "hover:-translate-y-1",
+        "hover:ease-linear",
+        "duration-150"
+      );
       playerButtonsContainer.append(button);
       button.addEventListener("click", () => {
         startGameButton.disabled = false;
@@ -84,7 +105,11 @@ export const Display = function (
       "py-1",
       "px-2",
       "text-2xl",
-      "rounded-md"
+      "rounded-md",
+      "hover:-translate-y-1",
+      "hover:ease-linear",
+      "hover:bg-amber-400",
+      "duration-100"
     );
     startGameButton.disabled = true;
     appContainer.append(startGameButton);
@@ -120,19 +145,34 @@ export const Display = function (
     appContainer.append(resultsDisplayContainer);
 
     const mainGameDisplayContainer = createElement("div");
+    mainGameDisplayContainer.classList.add(
+      "flex",
+      "flex-row",
+      "content-center",
+      "justify-center",
+      "items-center"
+    );
     appContainer.append(mainGameDisplayContainer);
 
-    const player1Div = createElement("div", "X");
-    mainGameDisplayContainer.append(player1Div);
+    const player1Sign = createElement("div", "X");
+    player1Sign.classList.add("bg-red-400", "mr-5");
+    mainGameDisplayContainer.append(player1Sign);
 
     const gameBoardGrid = createElement("div");
-    gameBoardGrid.classList.add("grid-container");
+    gameBoardGrid.classList.add("grid-container", "my-10");
     mainGameDisplayContainer.append(gameBoardGrid);
 
     createGridCells(gameBoardGrid);
 
-    const player2Div = createElement("div", "O");
-    mainGameDisplayContainer.append(player2Div);
+    const player2Sign = createElement("div", "O");
+    player2Sign.classList.add("bg-blue-400", "ml-5");
+    mainGameDisplayContainer.append(player2Sign);
+
+    const playerSignContainers = [player1Sign, player2Sign];
+
+    for (const playerSign of playerSignContainers) {
+      playerSign.classList.add("h-3/6", "px-5", "text-8xl", "rounded-md");
+    }
 
     const replayGameButtonContainer = createElement("div");
     replayGameButtonContainer.id = "replay-container";
