@@ -123,10 +123,10 @@ export const Display = function (
     });
   }
 
-  function toggleButtonClass(userMarkButton, computerMarkButton) {
+  function toggleButtonClass(userMarkButton, oponentMarkButton) {
     userMarkButton.className = "userMark";
-    if (computerMarkButton.classList.contains("userMark")) {
-      computerMarkButton.classList.remove("userMark");
+    if (oponentMarkButton.classList.contains("userMark")) {
+      oponentMarkButton.classList.remove("userMark");
     }
   }
 
@@ -154,6 +154,8 @@ export const Display = function (
     );
     appContainer.append(mainGameDisplayContainer);
 
+    // The first item of the array of assigned marks is always a user.
+    // And the second item is the mark for the oponent.
     const player1Sign = createElement("div", "X");
     player1Sign.classList.add("bg-red-400", "mr-5");
     mainGameDisplayContainer.append(player1Sign);
@@ -184,17 +186,27 @@ export const Display = function (
     const pickedCell = document.getElementById(pickedCellObject.id);
     pickedCell.textContent = pickedCellObject.mark;
     if (pickedCellObject.owner.name === "user") {
-      pickedCell.classList.add("userMarkColor");
-    } else {
-      pickedCell.classList.add("compMarkColor");
+      if (pickedCellObject.mark === "X") {
+        pickedCell.classList.add("xMarkColor");
+      } else {
+        pickedCell.classList.add("oMarkColor");
+      }
+    } else if (pickedCellObject.owner.name === "oponent") {
+      if (pickedCellObject.mark === "X") {
+        pickedCell.classList.add("xMarkColor");
+      } else {
+        pickedCell.classList.add("oMarkColor");
+      }
     }
   }
 
   function updateResults(gameResults) {
+    disableClickOnCells();
+
     const gridBoard = document.getElementById("grid-container");
     gridBoard.classList.remove("my-10");
     gridBoard.classList.add("my-4");
-    disableClickOnCells();
+
     const replayGameButtonContainer =
       document.getElementById("replay-container");
     const replayGameButton = createElement("button", "Replay");
@@ -217,12 +229,18 @@ export const Display = function (
       document.getElementById("results-container");
     resultsDisplayContainer.classList.add(
       "text-5xl",
-      "py-1",
       "px-2",
-      "border-solid",
-      "border-2",
-      "mt-2"
+      "mt-3",
+      "rounded-md",
+      "results-display"
     );
+
+    if (gameResults.winnerSign === "X") {
+      resultsDisplayContainer.classList.add("bg-red-400");
+    } else if (gameResults.winnerSign === "O") {
+      resultsDisplayContainer.classList.add("bg-blue-400");
+    }
+
     resultsDisplayContainer.textContent = `Winner : ${gameResults.winnerSign}`;
   }
 

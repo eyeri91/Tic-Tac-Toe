@@ -33,8 +33,9 @@ export const GameBoard = function (
   create9Cells();
 
   function assignPlayers(assignedMarks) {
+    // console.log(assignedMarks);
     const player1 = Player("user", assignedMarks[0], true);
-    const player2 = Player("computer", assignedMarks[1], false);
+    const player2 = Player("oponent", assignedMarks[1], false);
     players.push(player1, player2);
   }
 

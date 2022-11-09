@@ -53,10 +53,16 @@ body {
   background-color: var(--brightest);
 }
 
-.userMarkColor {
+.xMarkColor {
   background-color: var(--x-sign);
 }
 
-.compMarkColor {
+.oMarkColor {
   background-color: var(--o-sign);
+}
+
+/* Results */
+
+.results-display {
+  color: var(--dark);
 }
