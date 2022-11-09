@@ -1,7 +1,9 @@
 import { Player } from "./player.js";
 
 export const GameBoard = function (
+  publishAnnounceActivePlayerEvent,
   publishCellAssignedEvent,
+  publishToggleActivePlayerEvent,
   publishGameEndEvent
 ) {
   let roundCount = 0;
@@ -37,6 +39,7 @@ export const GameBoard = function (
     const player1 = Player("user", assignedMarks[0], true);
     const player2 = Player("oponent", assignedMarks[1], false);
     players.push(player1, player2);
+    publishAnnounceActivePlayerEvent(player1);
   }
 
   function assignCell(pickedCellId) {
@@ -63,6 +66,10 @@ export const GameBoard = function (
   function toggleActivePlayer() {
     players[0].isCurrentlyPlaying = !players[0].isCurrentlyPlaying;
     players[1].isCurrentlyPlaying = !players[1].isCurrentlyPlaying;
+
+    players[0].isCurrentlyPlaying
+      ? publishToggleActivePlayerEvent(players[0])
+      : publishToggleActivePlayerEvent(players[1]);
   }
 
   function checkWinningLine(cells) {

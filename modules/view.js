@@ -157,6 +157,7 @@ export const Display = function (
     // The first item of the array of assigned marks is always a user.
     // And the second item is the mark for the oponent.
     const player1Sign = createElement("div", "X");
+    player1Sign.id = "player1";
     player1Sign.classList.add("bg-red-400", "mr-5");
     mainGameDisplayContainer.append(player1Sign);
 
@@ -168,6 +169,7 @@ export const Display = function (
     createGridCells(gameBoardGrid);
 
     const player2Sign = createElement("div", "O");
+    player2Sign.id = "player2";
     player2Sign.classList.add("bg-blue-400", "ml-5");
     mainGameDisplayContainer.append(player2Sign);
 
@@ -182,7 +184,7 @@ export const Display = function (
     appContainer.append(replayGameButtonContainer);
   }
 
-  function changeCellColorAndText(pickedCellObject) {
+  function changePickedCellColorAndText(pickedCellObject) {
     const pickedCell = document.getElementById(pickedCellObject.id);
     pickedCell.textContent = pickedCellObject.mark;
     if (pickedCellObject.owner.name === "user") {
@@ -197,6 +199,18 @@ export const Display = function (
       } else {
         pickedCell.classList.add("oMarkColor");
       }
+    }
+  }
+
+  function toggleActivePlayerColor(activePlayer) {
+    const player1Sign = document.getElementById("player1");
+    const player2Sign = document.getElementById("player2");
+    if (activePlayer.sign === player1Sign.textContent) {
+      player1Sign.classList.add("active-player");
+      player2Sign.classList.remove("active-player");
+    } else {
+      player1Sign.classList.remove("active-player");
+      player2Sign.classList.add("active-player");
     }
   }
 
@@ -268,7 +282,8 @@ export const Display = function (
   return {
     renderStartPage,
     renderGamePage,
-    changeCellColorAndText,
+    changePickedCellColorAndText,
     updateResults,
+    toggleActivePlayerColor,
   };
 };

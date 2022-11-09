@@ -61,6 +61,11 @@ body {
   background-color: var(--o-sign);
 }
 
+.active-player {
+  outline: 6px solid var(--yellow);
+  outline-offset: -7px;
+}
+
 /* Results */
 
 .results-display {

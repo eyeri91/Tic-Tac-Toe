@@ -10,11 +10,19 @@ export const Controller = function (root) {
     view.renderGamePage(), model.assignPlayers(data);
   });
 
+  eventManager.subscribe("announceActivePlayer", (data) => {
+    view.toggleActivePlayerColor(data);
+  });
+
   eventManager.subscribe("assignCell", (data) => model.assignCell(data));
 
-  eventManager.subscribe("cellAssigned", (data) =>
-    view.changeCellColorAndText(data)
-  );
+  eventManager.subscribe("cellAssigned", (data) => {
+    view.changePickedCellColorAndText(data);
+  });
+
+  eventManager.subscribe("toggleActivePlayer", (data) => {
+    view.toggleActivePlayerColor(data);
+  });
 
   eventManager.subscribe("gameEnd", (data) => {
     view.updateResults(data);
@@ -30,7 +38,9 @@ export const Controller = function (root) {
   function init() {
     view.renderStartPage();
     model = GameBoard(
+      (data) => eventManager.publish("announceActivePlayer", data),
       (data) => eventManager.publish("cellAssigned", data),
+      (data) => eventManager.publish("toggleActivePlayer", data),
       (data) => eventManager.publish("gameEnd", data)
     );
   }
