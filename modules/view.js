@@ -237,11 +237,14 @@ export const Display = function (
 
     if (gameResults.winnerSign === "X") {
       resultsDisplayContainer.classList.add("bg-red-400");
+      resultsDisplayContainer.textContent = `Winner : ${gameResults.winnerSign}`;
     } else if (gameResults.winnerSign === "O") {
       resultsDisplayContainer.classList.add("bg-blue-400");
+      resultsDisplayContainer.textContent = `Winner : ${gameResults.winnerSign}`;
+    } else {
+      resultsDisplayContainer.classList.add("results-draw");
+      resultsDisplayContainer.textContent = "DRAW!!!";
     }
-
-    resultsDisplayContainer.textContent = `Winner : ${gameResults.winnerSign}`;
   }
 
   function disableClickOnCells() {
