@@ -162,7 +162,7 @@ export const Display = function (
 
     const gameBoardGrid = createElement("div");
     gameBoardGrid.id = "grid-container";
-    gameBoardGrid.classList.add("my-10");
+    gameBoardGrid.classList.add("my-10", "grid-container");
     mainGameDisplayContainer.append(gameBoardGrid);
 
     createGridCells(gameBoardGrid);
@@ -238,9 +238,11 @@ export const Display = function (
     if (gameResults.winnerSign === "X") {
       resultsDisplayContainer.classList.add("bg-red-400");
       resultsDisplayContainer.textContent = `Winner : ${gameResults.winnerSign}`;
+      changeWinningLineBorderColor(gameResults.winningLine, "bg-red-400");
     } else if (gameResults.winnerSign === "O") {
       resultsDisplayContainer.classList.add("bg-blue-400");
       resultsDisplayContainer.textContent = `Winner : ${gameResults.winnerSign}`;
+      changeWinningLineBorderColor(gameResults.winningLine, "bg-blue-400");
     } else {
       resultsDisplayContainer.classList.add("results-draw");
       resultsDisplayContainer.textContent = "DRAW!!!";
@@ -251,6 +253,15 @@ export const Display = function (
     const cells = document.getElementsByClassName("grid-item");
     for (const cell of cells) {
       cell.style.pointerEvents = "none";
+    }
+  }
+
+  function changeWinningLineBorderColor(winningLine) {
+    for (let i = 0; i < winningLine.length; i++) {
+      // document.getElementById(`${winningLine[i]}`).style.border = "none";
+      document
+        .getElementById(`${winningLine[i]}`)
+        .classList.add("winning-line-border");
     }
   }
 
