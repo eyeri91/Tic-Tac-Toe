@@ -212,6 +212,10 @@ export const Display = function (
       player1Sign.classList.remove("active-player");
       player2Sign.classList.add("active-player");
     }
+    if (activePlayer === "draw") {
+      player1Sign.classList.remove("active-player");
+      player2Sign.classList.remove("active-player");
+    }
   }
 
   function updateResults(gameResults) {
@@ -260,6 +264,7 @@ export const Display = function (
     } else {
       resultsDisplayContainer.classList.add("results-draw");
       resultsDisplayContainer.textContent = "DRAW!!!";
+      toggleActivePlayerColor("draw");
     }
   }
 
@@ -272,7 +277,6 @@ export const Display = function (
 
   function changeWinningLineBorderColor(winningLine) {
     for (let i = 0; i < winningLine.length; i++) {
-      // document.getElementById(`${winningLine[i]}`).style.border = "none";
       document
         .getElementById(`${winningLine[i]}`)
         .classList.add("winning-line-border");
