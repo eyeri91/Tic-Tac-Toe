@@ -53,15 +53,16 @@ body {
   background-color: var(--brightest);
 }
 
-.xMarkColor {
+.xSignColor {
   background-color: var(--x-sign);
 }
 
-.oMarkColor {
+.oSignColor {
   background-color: var(--o-sign);
 }
 
-.active-player {
+.active-player,
+.user-sign {
   outline: 6px solid var(--yellow);
   outline-offset: -7px;
 }

@@ -34,10 +34,9 @@ export const GameBoard = function (
 
   create9Cells();
 
-  function assignPlayers(assignedMarks) {
-    // console.log(assignedMarks);
-    const player1 = Player("user", assignedMarks[0], true);
-    const player2 = Player("oponent", assignedMarks[1], false);
+  function assignPlayers(assignedSigns) {
+    const player1 = Player("user", assignedSigns[0], true);
+    const player2 = Player("oponent", assignedSigns[1], false);
     players.push(player1, player2);
     publishAnnounceActivePlayerEvent(player1);
   }
@@ -56,7 +55,7 @@ export const GameBoard = function (
       const pickedCellObject = {
         id: pickedCell.id,
         owner: activePlayer,
-        mark: activePlayer.sign,
+        sign: activePlayer.sign,
       };
       publishCellAssignedEvent(pickedCellObject);
     }

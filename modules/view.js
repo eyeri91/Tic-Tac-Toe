@@ -116,25 +116,25 @@ export const Display = function (
     appContainer.append(startGameButton);
     startGameButton.addEventListener("click", () => {
       // Send data which charactor user chose to play
-      const assignedMarksArray = returnAssignedMarks(
+      const assignedSignsArray = returnAssignedSigns(
         player1Button,
         player2Button
       );
-      publishGameStartEvent(assignedMarksArray);
+      publishGameStartEvent(assignedSignsArray);
     });
   }
 
-  function toggleButtonClass(userMarkButton, oponentMarkButton) {
-    userMarkButton.classList.add("userMark");
-    if (oponentMarkButton.classList.contains("userMark")) {
-      oponentMarkButton.classList.remove("userMark");
+  function toggleButtonClass(userSignButton, oponentSignButton) {
+    userSignButton.classList.add("user-sign");
+    if (oponentSignButton.classList.contains("user-sign")) {
+      oponentSignButton.classList.remove("user-sign");
     }
   }
 
-  function returnAssignedMarks(player1Button, player2Button) {
-    // Return an array of assgined marks.
+  function returnAssignedSigns(player1Button, player2Button) {
+    // Return an array of assgined signs.
     // Index 0 is always user.
-    return player1Button.classList.contains("userMark")
+    return player1Button.classList.contains("user-sign")
       ? [player1Button.textContent, player2Button.textContent]
       : [player2Button.textContent, player1Button.textContent];
   }
@@ -155,8 +155,8 @@ export const Display = function (
     );
     appContainer.append(mainGameDisplayContainer);
 
-    // The first item of the array of assigned marks is always a user.
-    // And the second item is the mark for the oponent.
+    // The first item of the array of assigned signs is always a user.
+    // And the second item is the sign for the oponent.
     const player1Sign = createElement("div", "X");
     player1Sign.id = "player1";
     player1Sign.classList.add("bg-red-400", "mr-5");
@@ -187,18 +187,18 @@ export const Display = function (
 
   function changePickedCellColorAndText(pickedCellObject) {
     const pickedCell = document.getElementById(pickedCellObject.id);
-    pickedCell.textContent = pickedCellObject.mark;
+    pickedCell.textContent = pickedCellObject.sign;
     if (pickedCellObject.owner.name === "user") {
-      if (pickedCellObject.mark === "X") {
-        pickedCell.classList.add("xMarkColor");
+      if (pickedCellObject.sign === "X") {
+        pickedCell.classList.add("xSignColor");
       } else {
-        pickedCell.classList.add("oMarkColor");
+        pickedCell.classList.add("oSignColor");
       }
     } else if (pickedCellObject.owner.name === "oponent") {
-      if (pickedCellObject.mark === "X") {
-        pickedCell.classList.add("xMarkColor");
+      if (pickedCellObject.sign === "X") {
+        pickedCell.classList.add("xSignColor");
       } else {
-        pickedCell.classList.add("oMarkColor");
+        pickedCell.classList.add("oSignColor");
       }
     }
   }
