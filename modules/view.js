@@ -14,7 +14,8 @@ export const Display = function (
     "content-center",
     "items-center",
     "justify-center",
-    "rounded-md"
+    "rounded-md",
+    "min-w-min"
   );
 
   function createElement(elementType, elementText = "") {
@@ -76,7 +77,7 @@ export const Display = function (
     const playerButtons = [player1Button, player2Button];
 
     for (const button of playerButtons) {
-      button.setAttribute("type", "button");
+      button.type = "button";
       button.classList.add(
         "px-5",
         "mx-5",
@@ -124,7 +125,7 @@ export const Display = function (
   }
 
   function toggleButtonClass(userMarkButton, oponentMarkButton) {
-    userMarkButton.className = "userMark";
+    userMarkButton.classList.add("userMark");
     if (oponentMarkButton.classList.contains("userMark")) {
       oponentMarkButton.classList.remove("userMark");
     }
