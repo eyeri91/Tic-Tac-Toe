@@ -1,6 +1,9 @@
 # Tic-Tac-Toe
 
-**Tic Tac Toe** is a game where 2 players take turns putting their signs in empty squares. The first player to get 3 of her/his marks in a row(up, down, across, or diagonally) is the winner.
+***Tic Tac Toe*** is a game where 2 players take turns putting their signs in empty squares. 
+The first player to get 3 of her/his marks in a row(up, down, across, or diagonally) is the winner.
+
+<img width="300" alt="Screenshot 2022-11-16 at 8 28 28 PM" src="https://user-images.githubusercontent.com/70323981/202237742-dee74206-e9c6-4e02-81e4-0c249da0e0d1.png">     <img width="309" alt="Screenshot 2022-11-16 at 8 28 57 PM" src="https://user-images.githubusercontent.com/70323981/202237749-2da45451-8b15-422e-8f0a-dd6a2a706540.png">     <img width="298" alt="Screenshot 2022-11-16 at 8 29 37 PM" src="https://user-images.githubusercontent.com/70323981/202237870-bddaff4b-1b07-4730-8882-79b19c54d5c0.png">
 
 This project is from [the Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-tic-tac-toe).
 
