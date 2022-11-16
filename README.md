@@ -8,6 +8,7 @@ This project is from [the Odin Project](https://www.theodinproject.com/lessons/n
 
 1. How to organize code
 2. Use factory functions and module instead of constructors
+3. Utilize **Tailwind** for CSS
 
 ## How it was built
 
@@ -21,6 +22,8 @@ By splitting code inside of a module or factory, the code became much more easy 
 However as the program gets more complicated, I needed something more to separate game and display logic. This is where [MVC](https://developer.mozilla.org/en-US/docs/Glossary/MVC#:~:text=MVC%20(Model%2DView%2DController,of%20labor%20and%20improved%20maintenance.) architecture was introduced.
 
 Whatever deals with game rules were written in `game.js` file and UI related parts were taken care of by `view.js`. Also, `controller.js` module was added to manage the communication between game model and view logic. To help `controller` to receive and share common information, I also implemented [Publish/Subscribe](https://ably.com/topic/pub-sub) design parttern. This separation of concerns improved the project's code organiztion and helped me avoid writing spaghetti code.
+
+When it comes to CSS, I decided to check a new framework, **Tailwind**. The good part of using Tailwind was that I could also try
 
 ## Languages
 
