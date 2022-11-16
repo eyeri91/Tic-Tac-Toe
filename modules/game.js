@@ -96,7 +96,7 @@ export const GameBoard = function (
     if (winningLine) {
       const winnerData = {
         winner: cells[winningLine[0]].assignedPlayer,
-        winnerSign: cells[winningLine[0]].assignedPlayerSign,
+        sign: cells[winningLine[0]].assignedPlayerSign,
         winningLine,
       };
       publishGameEndEvent(winnerData);

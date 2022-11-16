@@ -254,14 +254,16 @@ export const Display = function (
       "results-display"
     );
 
-    if (gameResults.winnerSign === "X") {
+    if (gameResults.sign === "X") {
       resultsDisplayContainer.classList.add("bg-red-400");
-      resultsDisplayContainer.textContent = `Winner : ${gameResults.winnerSign}`;
+      resultsDisplayContainer.textContent = `Winner : ${gameResults.sign}`;
       changeWinningLineBorderColor(gameResults.winningLine, "bg-red-400");
-    } else if (gameResults.winnerSign === "O") {
+      toggleActivePlayerColor(gameResults);
+    } else if (gameResults.sign === "O") {
       resultsDisplayContainer.classList.add("bg-blue-400");
-      resultsDisplayContainer.textContent = `Winner : ${gameResults.winnerSign}`;
+      resultsDisplayContainer.textContent = `Winner : ${gameResults.sign}`;
       changeWinningLineBorderColor(gameResults.winningLine, "bg-blue-400");
+      toggleActivePlayerColor(gameResults);
     } else {
       resultsDisplayContainer.classList.add("results-draw");
       resultsDisplayContainer.textContent = "DRAW!!!";
