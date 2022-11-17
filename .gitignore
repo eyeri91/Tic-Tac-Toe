@@ -1,7 +1,0 @@
-
-# misc
-*.json
-*.cjs
-/node_modules
-dist
-tailwind.config.js
