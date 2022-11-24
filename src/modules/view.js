@@ -15,7 +15,8 @@ export const Display = function (
     "items-center",
     "justify-center",
     "rounded-md",
-    "min-w-min"
+    "max-w-screen-md",
+    "min-w-max"
   );
 
   function createElement(elementType, elementText = "") {
@@ -47,7 +48,8 @@ export const Display = function (
     if (appContainer.hasChildNodes()) appContainer.replaceChildren();
     const gameTitle = createElement("h1", "Tic-Tac-Toe");
     gameTitle.classList.add(
-      "text-8xl",
+      "text-6xl",
+      "sm:text-8xl",
       "my-5",
       "px-3",
       "game-title",
