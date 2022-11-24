@@ -3,5 +3,5 @@
 *.json
 *.cjs
 /node_modules
-/src
-tailwind.config.js
+/dist
+*.config.js
