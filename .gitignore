@@ -1,7 +1,6 @@
 
 # misc
 *.json
-*.cjs
 /node_modules
 /dist
 *.config.js
