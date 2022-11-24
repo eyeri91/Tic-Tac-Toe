@@ -1,5 +1,5 @@
 import "./input.css";
-import { Controller } from "./controller.js";
+import { Controller } from "./modules/controller.js";
 const gameApp = document.getElementById("game-container");
 
 const display = Controller(gameApp);
