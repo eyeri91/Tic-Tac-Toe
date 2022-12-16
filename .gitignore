@@ -3,4 +3,4 @@
 *.json
 /node_modules
 /dist
-*.config.js
+!/dist/index.html
